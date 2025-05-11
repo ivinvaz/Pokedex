@@ -58,11 +58,11 @@ def captureContent(event):
         pokeType = apiResult["type"]
         pokeSprite = apiResult["sprite"]
         changeSprite(pokeSprite)
-        canvas.itemconfig(titulo, text=f"{pokeNum}-{pokeName}", fill="black")
-        canvas.itemconfig(tipo, text=f"{"    ".join(pokeType)}")
+        canvas.itemconfig(title, text=f"{pokeNum}-{pokeName}", fill="black")
+        canvas.itemconfig(type, text=f"{"    ".join(pokeType)}")
     else:
-        canvas.itemconfig(titulo, text="Not Found", fill="red")
-        canvas.itemconfig(tipo, text="None")
+        canvas.itemconfig(title, text="Not Found", fill="red")
+        canvas.itemconfig(type, text="None")
         erroImage = PhotoImage(file="./src/close.png")
         canvas.itemconfig(pkmImage, image=erroImage)
     entryBar.delete(0, END)
@@ -77,11 +77,11 @@ def nextPkm():
         pokeType = apiResult["type"]
         pokeSprite = apiResult["sprite"]
         changeSprite(pokeSprite)
-        canvas.itemconfig(titulo, text=f"{pokeNum}-{pokeName}", fill="black")
-        canvas.itemconfig(tipo, text=f"{"    ".join(pokeType)}")
+        canvas.itemconfig(title, text=f"{pokeNum}-{pokeName}", fill="black")
+        canvas.itemconfig(type, text=f"{"    ".join(pokeType)}")
     else:
-        canvas.itemconfig(titulo, text="Not Found", fill="red")
-        canvas.itemconfig(tipo, text="None")
+        canvas.itemconfig(title, text="Not Found", fill="red")
+        canvas.itemconfig(type, text="None")
         erroImage = PhotoImage(file="./src/close.png")
         canvas.itemconfig(pkmImage, image=erroImage)
 
@@ -96,11 +96,11 @@ def backPkm():
             pokeType = apiResult["type"]
             pokeSprite = apiResult["sprite"]
             changeSprite(pokeSprite)
-            canvas.itemconfig(titulo, text=f"{pokeNum}-{pokeName}", fill="black")
-            canvas.itemconfig(tipo, text=f"{"    ".join(pokeType)}")
+            canvas.itemconfig(title, text=f"{pokeNum}-{pokeName}", fill="black")
+            canvas.itemconfig(type, text=f"{"    ".join(pokeType)}")
         else:
-            canvas.itemconfig(titulo, text="Not Found", fill="red")
-            canvas.itemconfig(tipo, text="None")
+            canvas.itemconfig(title, text="Not Found", fill="red")
+            canvas.itemconfig(type, text="None")
             erroImage = PhotoImage(file="./src/close.png")
             canvas.itemconfig(pkmImage, image=erroImage)
 
@@ -114,8 +114,8 @@ canvas = Canvas(width=430, height=640)
 canvas.grid(row=0, column=0)
 pokedex_bg = PhotoImage(file="./src/pokedex.png")
 bg = canvas.create_image(217, 321, image=pokedex_bg)
-titulo = canvas.create_text(220, 370, font=("Arial", 20), text=f"{pokeNum}-{pokeName}")
-tipo = canvas.create_text(200, 320, font=("Arial", 15), text=f"{"    ".join(pokeType)}")
+title = canvas.create_text(220, 370, font=("Arial", 20), text=f"{pokeNum}-{pokeName}")
+type = canvas.create_text(200, 320, font=("Arial", 15), text=f"{"    ".join(pokeType)}")
 
 # Search Bar Interface
 entryBar = Entry(width=41)
