@@ -27,7 +27,7 @@ def apiHandler(get):
 initial_pokemon = apiHandler(1)
 pokeName = initial_pokemon["name"] if initial_pokemon else "Not Found"
 pokeNum = initial_pokemon["number"] if initial_pokemon else "0"
-pokeType = initial_pokemon["type"] if initial_pokemon else []
+pokeType = initial_pokemon["type"] if initial_pokemon else "None"
 pokeSprite = initial_pokemon["sprite"] if initial_pokemon else ""
 
 # Sprite Loader
@@ -59,8 +59,10 @@ def captureContent(event):
         pokeSprite = apiResult["sprite"]
         changeSprite(pokeSprite)
         canvas.itemconfig(titulo, text=f"{pokeNum}-{pokeName}", fill="black")
+        canvas.itemconfig(tipo, text=f"{"    ".join(pokeType)}")
     else:
         canvas.itemconfig(titulo, text="Not Found", fill="red")
+        canvas.itemconfig(tipo, text="None")
         erroImage = PhotoImage(file="./src/close.png")
         canvas.itemconfig(pkmImage, image=erroImage)
     entryBar.delete(0, END)
@@ -76,8 +78,10 @@ def nextPkm():
         pokeSprite = apiResult["sprite"]
         changeSprite(pokeSprite)
         canvas.itemconfig(titulo, text=f"{pokeNum}-{pokeName}", fill="black")
+        canvas.itemconfig(tipo, text=f"{"    ".join(pokeType)}")
     else:
         canvas.itemconfig(titulo, text="Not Found", fill="red")
+        canvas.itemconfig(tipo, text="None")
         erroImage = PhotoImage(file="./src/close.png")
         canvas.itemconfig(pkmImage, image=erroImage)
 
@@ -93,8 +97,10 @@ def backPkm():
             pokeSprite = apiResult["sprite"]
             changeSprite(pokeSprite)
             canvas.itemconfig(titulo, text=f"{pokeNum}-{pokeName}", fill="black")
+            canvas.itemconfig(tipo, text=f"{"    ".join(pokeType)}")
         else:
             canvas.itemconfig(titulo, text="Not Found", fill="red")
+            canvas.itemconfig(tipo, text="None")
             erroImage = PhotoImage(file="./src/close.png")
             canvas.itemconfig(pkmImage, image=erroImage)
 
@@ -109,6 +115,7 @@ canvas.grid(row=0, column=0)
 pokedex_bg = PhotoImage(file="./src/pokedex.png")
 bg = canvas.create_image(217, 321, image=pokedex_bg)
 titulo = canvas.create_text(220, 370, font=("Arial", 20), text=f"{pokeNum}-{pokeName}")
+tipo = canvas.create_text(200, 320, font=("Arial", 15), text=f"{"    ".join(pokeType)}")
 
 # Search Bar Interface
 entryBar = Entry(width=41)
